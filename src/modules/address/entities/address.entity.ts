@@ -10,6 +10,13 @@ export class AddressEntity implements Address {
   id: string;
 
   @ApiProperty({
+    description: 'Session ID',
+    example: 'bb60cad4-0240-46ce-8b3d-119877b64eff',
+    required: true,
+  })
+  sessionId: string;
+
+  @ApiProperty({
     type: String,
     description: 'Street address',
     example: '123 Main St',

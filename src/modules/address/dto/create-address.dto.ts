@@ -1,7 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsPostalCode } from 'class-validator';
+import { IsNotEmpty, IsString, IsPostalCode, IsUUID } from 'class-validator';
 
 export class CreateAddressDto {
+  @ApiProperty({
+    description: 'Session ID',
+    example: 'bb60cad4-0240-46ce-8b3d-119877b64eff',
+    required: true,
+  })
+  @IsUUID()
+  @IsNotEmpty({ message: 'sessionId is required' })
+  readonly sessionId: string;
+
   @ApiProperty({
     description: 'Street address',
     example: '123 Main St',

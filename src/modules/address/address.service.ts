@@ -2,7 +2,11 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 import { AddressRepository } from './address.repository';
 import axios from 'axios';
 import { createCustomError } from 'src/commom/utils/helpers';
-import { CreateAddressDto, UpdateAddressDto } from './dto';
+import {
+  CreateAddressByCepDto,
+  CreateAddressDto,
+  UpdateAddressDto,
+} from './dto';
 import { AddressEntity } from './entities/address.entity';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
@@ -43,7 +47,9 @@ export class AddressService {
     }
   }
 
-  async createAddressByCep(params: { cep: string }) {
+  async createAddressByCep(
+    params: CreateAddressByCepDto,
+  ): Promise<AddressEntity> {
     try {
       const response = await axios.get(
         `https://viacep.com.br/ws/${params.cep}/json/`,
@@ -56,6 +62,7 @@ export class AddressService {
 
       const addressDto: CreateAddressDto = {
         street: data.logradouro,
+        sessionId: data.sessionId,
         postalCode: data.cep,
         city: data.localidade,
         state: data.uf,

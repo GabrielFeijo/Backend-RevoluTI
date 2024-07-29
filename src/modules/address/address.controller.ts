@@ -102,9 +102,9 @@ export class AddressController {
     description: 'CEP not found.',
   })
   async createAddressByCep(
-    @Body() { cep }: CreateAddressByCepDto,
+    @Body() createAddressByCepDto: CreateAddressByCepDto,
   ): Promise<AddressEntity> {
-    return await this.addressService.createAddressByCep({ cep });
+    return await this.addressService.createAddressByCep(createAddressByCepDto);
   }
 
   @Patch('/update-address/:id')
