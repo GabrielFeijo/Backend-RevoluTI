@@ -16,7 +16,23 @@ export class AddressService {
 
   async getAllAddresses(): Promise<AddressEntity[]> {
     try {
-      const addressList = await this.repository.findMany();
+      const addressList = await this.repository.findMany({});
+      return addressList;
+    } catch (e) {
+      throw createCustomError(
+        e.message || 'Something went wrong',
+        e.status || HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
+  async getAddressesBySessionId(sessionId: string): Promise<AddressEntity[]> {
+    try {
+      const addressList = await this.repository.findMany({
+        where: {
+          sessionId,
+        },
+      });
       return addressList;
     } catch (e) {
       throw createCustomError(
@@ -62,7 +78,7 @@ export class AddressService {
 
       const addressDto: CreateAddressDto = {
         street: data.logradouro,
-        sessionId: data.sessionId,
+        sessionId: params.sessionId,
         postalCode: data.cep,
         city: data.localidade,
         state: data.uf,

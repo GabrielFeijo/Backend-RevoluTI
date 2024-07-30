@@ -8,7 +8,13 @@ import {
   Post,
 } from '@nestjs/common';
 import { AddressService } from './address.service';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AddressEntity } from './entities/address.entity';
 import {
   CreateAddressByCepDto,
@@ -21,7 +27,7 @@ import {
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
-  @Get('list-adresses')
+  @Get('address')
   @ApiOperation({
     summary: 'List all addresses',
     description: 'Endpoint to retrieve a list of all addresses.',
@@ -36,10 +42,16 @@ export class AddressController {
     return await this.addressService.getAllAddresses();
   }
 
-  @Get('/find-address/:id')
+  @Get('/address/:id')
   @ApiOperation({
-    summary: 'Find address by ID',
-    description: 'Endpoint to retrieve an address by ID.',
+    summary: 'Retrieve address by ID',
+    description:
+      'Fetches the details of a single address identified by the provided ID. This endpoint returns the address with the specified ID if it exists.',
+  })
+  @ApiParam({
+    name: 'id',
+    description: 'Unique identifier for the address.',
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
   })
   @ApiResponse({
     status: 200,
@@ -48,10 +60,43 @@ export class AddressController {
   })
   @ApiResponse({
     status: 404,
-    description: 'Address not found.',
+    description: 'Address not found with the provided ID.',
   })
-  async findAddressById(@Param('id') id: string) {
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid address ID format.',
+  })
+  async findAddressById(@Param('id') id: string): Promise<AddressEntity> {
     return await this.addressService.getAddressById(id);
+  }
+
+  @Get('/address/session/:sessionId')
+  @ApiOperation({
+    summary: 'List addresses by session ID',
+    description:
+      'Retrieve a list of addresses associated with a specific session ID. This endpoint returns all addresses linked to the given session ID.',
+  })
+  @ApiParam({
+    name: 'sessionId',
+    description: 'Identifier for the session.',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'List of addresses successfully retrieved.',
+    type: AddressEntity,
+    isArray: true,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No addresses found for the provided session ID.',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid session ID format.',
+  })
+  async listAddressBySessionId(@Param('sessionId') sessionId: string) {
+    return await this.addressService.getAddressesBySessionId(sessionId);
   }
 
   @Post('/create-address')
@@ -112,6 +157,15 @@ export class AddressController {
     summary: 'Update an address',
     description: 'Endpoint to update an address with provided ID.',
   })
+  @ApiBody({
+    type: UpdateAddressDto,
+    description: 'JSON structure containing data for updating an address.',
+  })
+  @ApiParam({
+    name: 'id',
+    description: 'Unique identifier for the address.',
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+  })
   @ApiResponse({
     status: 200,
     type: AddressEntity,
@@ -125,10 +179,6 @@ export class AddressController {
     status: 400,
     description: 'Invalid request body.',
   })
-  @ApiBody({
-    type: UpdateAddressDto,
-    description: 'JSON structure containing data for updating an address.',
-  })
   async updateAddress(
     @Param('id') id: string,
     @Body() updateAddressDto: UpdateAddressDto,
@@ -140,6 +190,11 @@ export class AddressController {
   @ApiOperation({
     summary: 'Delete an address',
     description: 'Endpoint to delete an address with provided ID.',
+  })
+  @ApiParam({
+    name: 'id',
+    description: 'Unique identifier for the address.',
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
   })
   @ApiResponse({
     status: 200,

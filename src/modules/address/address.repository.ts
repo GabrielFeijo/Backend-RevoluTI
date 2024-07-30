@@ -6,9 +6,11 @@ import { Address, Prisma } from '@prisma/client';
 export class AddressRepository {
   constructor(private prisma: PrismaService) {}
 
-  async findMany(): Promise<Address[]> {
+  async findMany(params: {
+    where?: Prisma.AddressWhereInput;
+  }): Promise<Address[]> {
     try {
-      return await this.prisma.address.findMany({});
+      return await this.prisma.address.findMany(params);
     } catch (error) {
       throw error;
     }
