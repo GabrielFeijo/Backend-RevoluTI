@@ -18,11 +18,18 @@ async function bootstrap() {
     )
     .setVersion('1.0')
     .addServer(`http://localhost:${port}/`, 'Local environment')
-    .addServer('https://production.revoluti.com/', 'Production')
+    .addServer('https://backendrevoluti.desafiotecnico.shop/', 'Production')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api/v1/documentation', app, document);
+  SwaggerModule.setup('api/v1/documentation', app, document, {
+    customSiteTitle: 'Desafio RevolutiTI - Gabriel Feijó',
+    customfavIcon: 'https://i.imgur.com/WtPLZBr.png',
+    customCss: `.topbar-wrapper {content:url(https://frontendrevoluti.desafiotecnico.shop/logo.svg);}
+    .swagger-ui .topbar { background-color: #FAFAFA;}
+    .swagger-ui .info { margin: 0; }
+    `,
+  });
 
   await app.listen(port);
 }
