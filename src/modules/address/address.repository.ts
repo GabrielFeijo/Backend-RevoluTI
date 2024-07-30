@@ -8,6 +8,7 @@ export class AddressRepository {
 
   async findMany(params: {
     where?: Prisma.AddressWhereInput;
+    orderBy?: Prisma.AddressOrderByWithRelationInput;
   }): Promise<Address[]> {
     try {
       return await this.prisma.address.findMany(params);

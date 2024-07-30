@@ -16,7 +16,11 @@ export class AddressService {
 
   async getAllAddresses(): Promise<AddressEntity[]> {
     try {
-      const addressList = await this.repository.findMany({});
+      const addressList = await this.repository.findMany({
+        orderBy: {
+          createdAt: 'desc',
+        },
+      });
       return addressList;
     } catch (e) {
       throw createCustomError(
@@ -31,6 +35,9 @@ export class AddressService {
       const addressList = await this.repository.findMany({
         where: {
           sessionId,
+        },
+        orderBy: {
+          createdAt: 'desc',
         },
       });
       return addressList;
