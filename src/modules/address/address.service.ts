@@ -91,6 +91,14 @@ export class AddressService {
 
       return address;
     } catch (e) {
+      if (e instanceof PrismaClientKnownRequestError) {
+        if (e.code === 'P2002') {
+          throw createCustomError(
+            'Address with this session ID and postal code already exists',
+            HttpStatus.CONFLICT,
+          );
+        }
+      }
       throw createCustomError(
         e.message || 'Something went wrong',
         e.status || HttpStatus.BAD_REQUEST,
@@ -105,6 +113,14 @@ export class AddressService {
       });
       return address;
     } catch (e) {
+      if (e instanceof PrismaClientKnownRequestError) {
+        if (e.code === 'P2002') {
+          throw createCustomError(
+            'Address with this session ID and postal code already exists',
+            HttpStatus.CONFLICT,
+          );
+        }
+      }
       throw createCustomError(
         e.message || 'Something went wrong',
         e.status || HttpStatus.BAD_REQUEST,
