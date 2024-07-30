@@ -38,9 +38,11 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@testcontainers/postgresql": "^10.11.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
@@ -67,13 +69,17 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "testTimeout": 60000,
+    "rootDir": "./",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "./src/**/*.ts"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
