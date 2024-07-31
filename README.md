@@ -1,73 +1,79 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# RevoluTI - Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição do Projeto 📝
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este repositório contém o código backend para o projeto de CEP Finder, desenvolvido para um desafio técnico da empresa RevoluTI. A API gerencia endereços, valida CEPs e mantém um histórico de pesquisas por usuário.
 
-## Description
+## Tecnologias Utilizadas ⚙
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Framework Node.js para construir aplicações server-side com TypeScript.
+- **Prisma**: ORM para interagir com o banco de dados.
+- **PostgreSQL**: Banco de dados relacional para armazenamento de dados.
+- **TypeScript**: Linguagem de programação para garantir tipagem estática e segurança no desenvolvimento.
 
-## Installation
+## Funcionalidades
+
+- API para criação e gerenciamento de endereços.
+- Validação de CEP e armazenamento de endereços.
+- Manutenção do histórico de pesquisas por usuário.
+- Documentação da API utilizando Swagger para facilitar o desenvolvimento e integração.
+
+## 👾 Experimente
+
+Para testar a aplicação, acesse os seguintes links:
+
+- [Frontend - CEP Finder](https://frontendrevoluti.desafiotecnico.shop/).
+- [Backend - Documentação](https://backendrevoluti.desafiotecnico.shop/api/v1/documentation).
+
+<sub>PS: Optei por utilizar o domínio personalizado desafiotecnico.shop para padronizar o projeto. O frontend está hospedado no frontendrevoluti, enquanto o backend está hospedado no subdomínio backendrevoluti. Ambos os domínios possuem certificação SSL para garantir a segurança da comunicação.</sub>
+
+## 🚀 Começo
+
+Para iniciar o projeto localmente:
+
+### Pré-requisitos
+
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+
+### Instalando e Executando
 
 ```bash
+# Clone o repositório
+$ git clone https://github.com/GabrielFeijo/Backend-RevoluTI
+
+# Acesse a pasta do projeto
+$ cd Backend-RevoluTI
+
+# Instale as dependências
 $ npm install
-```
 
-## Running the app
+# Configure as variáveis de ambiente no arquivo .env. Utilize o arquivo .env.example para ajudar na configuração
 
-```bash
-# development
-$ npm run start
+# Inicie o banco de dados PostgreSQL usando Docker Compose
+$ docker compose up -d
 
-# watch mode
+# Execute as migrações do Prisma
+$ npx prisma migrate dev
+
+# Inicie a aplicação
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+### 🧪 Executando Testes
 
 ```bash
-# unit tests
+# Execute os testes unitários
 $ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+## 🛠️ Feito utilizando
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### BackEnd
 
-## Stay in touch
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40" height="45" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" width="40" height="45" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" width="40" height="45" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" width="40" height="45" />
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Deploy
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="40" height="45" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" width="40" height="45" /> <img src="https://neon.tech/favicon/favicon-256x256.png" width="40" height="45" />
