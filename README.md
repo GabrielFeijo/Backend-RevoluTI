@@ -76,4 +76,4 @@ $ npm run test
 
 ### Deploy
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="40" height="45" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" width="40" height="45" /> <img src="https://neon.tech/favicon/favicon-256x256.png" width="40" height="45" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" width="40" height="45" /> <img src="https://neon.tech/favicon/favicon-256x256.png" width="40" height="45" />
