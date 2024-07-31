@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { AddressRepository } from './address.repository';
 import axios from 'axios';
-import { createCustomError } from 'src/commom/utils/helpers';
+import { createCustomError } from 'src/common/utils/helpers';
 import {
   CreateAddressByCepDto,
   CreateAddressDto,
