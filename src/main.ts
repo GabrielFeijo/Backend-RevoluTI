@@ -12,7 +12,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
 
   const options = new DocumentBuilder()
-    .setTitle('Desafio RevolutiTI - Gabriel Feijó')
+    .setTitle('Desafio RevoluTI - Gabriel Feijó')
     .setDescription(
       'API para gerenciamento de endereços, permitindo a criação, atualização, exclusão e consulta de endereços.',
     )
@@ -23,7 +23,7 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api/v1/documentation', app, document, {
-    customSiteTitle: 'Desafio RevolutiTI - Gabriel Feijó',
+    customSiteTitle: 'Desafio RevoluTI - Gabriel Feijó',
     customfavIcon: 'https://i.imgur.com/WtPLZBr.png',
     customCss: `.topbar-wrapper {content:url(https://frontendrevoluti.desafiotecnico.shop/logo.svg);}
     .swagger-ui .topbar { background-color: #FAFAFA;}
