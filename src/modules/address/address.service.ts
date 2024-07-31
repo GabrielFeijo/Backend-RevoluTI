@@ -148,8 +148,21 @@ export class AddressService {
       });
       return updateAddress;
     } catch (e) {
-      if (e instanceof PrismaClientKnownRequestError && e.code === 'P2025') {
-        throw createCustomError('Address not found', HttpStatus.NOT_FOUND);
+      if (e instanceof PrismaClientKnownRequestError) {
+        switch (e.code) {
+          case 'P2025':
+            throw createCustomError('Address not found', HttpStatus.NOT_FOUND);
+          case 'P2002':
+            throw createCustomError(
+              'Address with this session ID and postal code already exists',
+              HttpStatus.CONFLICT,
+            );
+          default:
+            throw createCustomError(
+              e.message || 'Something went wrong',
+              HttpStatus.BAD_REQUEST,
+            );
+        }
       }
       throw createCustomError(
         e.message || 'Something went wrong',
