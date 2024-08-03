@@ -18,6 +18,7 @@ Este repositório contém o código backend para o projeto de CEP Finder, desenv
 - Manutenção do histórico de pesquisas por usuário.
 - Documentação da API utilizando Swagger para facilitar o desenvolvimento e integração.
 
+<!--
 ## 👾 Experimente
 
 Para testar a aplicação, acesse os seguintes links:
@@ -26,6 +27,11 @@ Para testar a aplicação, acesse os seguintes links:
 - [Backend - Documentação](https://backendrevoluti.desafiotecnico.shop/api/v1/documentation).
 
 <sub>PS: Optei por utilizar o domínio personalizado desafiotecnico.shop para padronizar o projeto. O frontend está hospedado no frontendrevoluti, enquanto o backend está hospedado no subdomínio backendrevoluti. Ambos os domínios possuem certificação SSL para garantir a segurança da comunicação.</sub>
+-->
+
+## 📄 Documentação
+
+<img src="https://i.imgur.com/BWkirEQ.png" width="1920"/>
 
 ## 🚀 Começo
 
