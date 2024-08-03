@@ -17,8 +17,8 @@ async function bootstrap() {
       'API para gerenciamento de endereços, permitindo a criação, atualização, exclusão e consulta de endereços.',
     )
     .setVersion('1.0')
-    .addServer(`http://localhost:${port}/`, 'Local environment')
     .addServer('https://backendrevoluti.desafiotecnico.shop/', 'Production')
+    .addServer(`http://localhost:${port}/`, 'Local environment')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
